@@ -1,6 +1,4 @@
-const jsonData = `{
-  "date": "2022-04-03",
-  "movies": [
+const jsonData = `[
     {
       "Title": "The Shawshank Redemption",
       "Year": "1994",
@@ -9877,86 +9875,26 @@ const jsonData = `{
       "Website": "N/A",
       "Response": "True"
     }
-  ]
-}`;
+  ]`;
 
 const jsonToJsData = data => JSON.parse(data);
 const jsData = jsonToJsData(jsonData);
-const moviesArray = jsData.movies;
 
-async function createMovieBlock() {
-  async function filterMovies() {
-    async function checkStatus(item) {
-      const response = await fetch(item);
-      return response.ok;
-    }
-    for (const item of moviesArray) {
-      const isOk = await checkStatus(item['Poster']);
-      if (isOk) {
-        result.push(item);
-      }
-    }
-    console.log(result);
-    return result;
-  }
-  function randomizer(value) {
-    return Math.round(value * Math.random());
-  }
-  
+async function filterLinks() {
   const result = [];
-  const filteredMovieArr = await filterMovies();
-
-  let randomIndex = randomizer(filteredMovieArr.length);
-
-  const movieBlock = document.createElement('div');
-  movieBlock.classList.add('movie-container');
-  movieBlock.innerHTML = `<img
-                          class="movie-image"
-                          width="300"
-                          height="450"
-                          src="${filteredMovieArr[randomIndex]['Poster']}"
-                          alt="${filteredMovieArr[randomIndex]['Title']}">`;
-  document
-    .querySelector('.container')
-    .insertAdjacentElement('afterbegin', movieBlock);
+  
+  jsData.forEach(async link => {
+    try {
+      const response = await fetch(link['Poster']);
+      if (response.ok) {
+        result.push(link);
+      }
+    } catch (error) {
+      console.error(`Fetch error for ${link}:`, error);
+    }
+    return ; // Посилання видаляється, якщо виникає помилка fetch
+  });
+  console.log(result);
 }
 
-for (let i = 0; i < 3; i++) {
-  createMovieBlock();
-}
-
-// async function fetchData() {
-//   let incomingData;
-
-//   try {
-//     const response = await fetch(
-//       'https://raw.githubusercontent.com/toedter/movies-demo/master/backend/src/main/resources/static/movie-data/movies-250.json',
-//     );
-//     const data = await response.json();
-
-//     incomingData = data.movies;
-//     console.log(incomingData);
-
-//     // Викликати функцію або виконати інші дії, що залежать від отриманих даних
-//     doSomethingWithIncomingData();
-//   } catch (error) {
-//     console.error('Помилка завантаження файлу:', error);
-//   }
-// }
-
-// function doSomethingWithIncomingData() {
-//   // Тут ви можете використовувати `incomingData`
-//   console.log('Дії, що залежать від отриманих даних', incomingData);
-// }
-
-// fetchData();
-
-// const movieBlock = document.createElement('div');
-// movieBlock.classList.add('movie-container');
-// movieBlock.innerHTML = `<img
-//                         class="movie-image"
-//                         width="300"
-//                         height="450"
-//                         src="${moviesArray[randomIndex]['Poster']}"
-//                         alt="${moviesArray[randomIndex]['Title']}">`;
-// document.body.insertAdjacentElement('afterbegin', movieBlock);
+console.log(filterLinks());
