@@ -52,8 +52,8 @@ function randomMoviePicker(n) {
     const randomIndex = Math.round(moviesArray.length * Math.random());
     const content = makeTag('div', 'movie-container');
     const poster = makeTag('img', 'movie-image', {
-      width: 180,
-      height: 270,
+      width: 300,
+      height: 450,
       src: moviesArray[randomIndex]['Poster'],
       alt: moviesArray[randomIndex]['Title'],
     });
@@ -77,7 +77,7 @@ function assembleBaseHtml(obj) {
   }
 }
 
-function addListener(element, eventType, callbackFn) {
+function getListener(element, eventType, callbackFn) {
   element.addEventListener(eventType, e => callbackFn());
 }
 
@@ -108,4 +108,4 @@ assembleBaseHtml({
 
 randomMoviePicker(3);
 
-addListener(generateButton, 'click', location.reload.bind(location));
+getListener(generateButton, 'click', location.reload.bind(location));
