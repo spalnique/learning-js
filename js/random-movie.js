@@ -4,6 +4,12 @@ import { jsonData } from './data.js';
 
 const moviesArray = JSON.parse(jsonData);
 
+///// makeTag створює html елемент із класом (або класами), атрибутами та текстовим контентом
+///// tagName приймає рядок із назвою тегу, наприклад 'div', 'h1', 'p'
+///// classes приймає рядок або масив рядків, наприклад 'header', 'logo', ['header', 'logo']
+///// attObj  приймає обʼєкт, у якому key це імʼя атрибуту, а value - рядок, що є його значенням
+///// innerText приймає рядок, що розташовується між відкриваючим та закриваючим тегами
+
 function makeTag(tagName, classes, attObj, innerText) {
   const html = document.createElement(tagName);
   if (Array.isArray(classes)) {
