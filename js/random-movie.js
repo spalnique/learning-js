@@ -8,16 +8,10 @@ async function createMovieBlock() {
   movieBlock.classList.add('movie-container');
   const poster = document.createElement('img');
   poster.classList.add('movie-image');
-  // poster.width = 300;
-  // poster.height = 450;
-  // poster.src = `${moviesArray[randomIndex]['Poster']}`;
-  // poster.alt = `${moviesArray[randomIndex]['Title']}`;
-  movieBlock.innerHTML = `<img
-                          class="movie-image"
-                          width="300"
-                          height="450"
-                          src="${moviesArray[randomIndex]['Poster']}"
-                          alt="${moviesArray[randomIndex]['Title']}">`;
+  poster.width = 300;
+  poster.height = 450;
+  poster.src = `${moviesArray[randomIndex]['Poster']}`;
+  poster.alt = `${moviesArray[randomIndex]['Title']}`;
   movieBlock.append(poster);
   container.append(movieBlock);
 }
@@ -41,6 +35,15 @@ document.body.prepend(header, main, footer);
 for (let i = 0; i < 3; i++) {
   createMovieBlock();
 }
+
+const button = document.createElement('button');
+button.classList.add('regenerate');
+button.type = 'button';
+button.textContent = 'Get another three awesome movies!';
+main.append(button);
+button.addEventListener('click', () => {
+  location.reload();
+});
 
 // async function fetchData() {
 //   let incomingData;
