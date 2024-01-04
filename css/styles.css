@@ -48,7 +48,7 @@ button {
   padding: 15px;
 }
 
-.logo {
+.logo-link {
   display: block;
   width: 222px;
   padding: 10.5px;
@@ -67,11 +67,13 @@ button {
   border-radius: 5px;
   background-color: rgb(211, 60, 33);
   color: beige;
+  box-shadow: 0px 0px 50px 5px lightslategray;
   transition: box-shadow 200ms cubic-bezier(0.47, 0, 0.745, 0.715),
     background-color 200ms cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
 .regenerate:hover {
-  box-shadow: 1px 1px 10px 0px rgba(38, 38, 38, 0.3);
+  /* box-shadow: 1px 1px 10px 0px rgba(38, 38, 38, 0.3); */
+  box-shadow: 0px 0px 25px 5px lightslategray;
   background-color: rgb(226, 82, 56);
 }
