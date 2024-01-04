@@ -1,4 +1,4 @@
-////////// Тут імпортуються та перетворюються дані, описуються функції, 
+////////// Тут імпортуються та перетворюються дані, описуються функції,
 
 import { jsonData } from './data.js';
 
@@ -30,7 +30,7 @@ function randomMoviePicker(quantity) {
       alt: moviesArray[randomIndex]['Title'],
     });
     content.append(poster);
-    container.insertAdjacentHTML('afterbegin', content.outerHTML);
+    container.append(content);
   }
 }
 
