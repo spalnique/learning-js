@@ -51,13 +51,20 @@ function randomMoviePicker(n) {
   for (let i = 0; i < n; i++) {
     const randomIndex = Math.round(moviesArray.length * Math.random());
     const content = makeTag('div', 'movie-container');
+    const link = makeTag('a', 'poster-link', {
+      href: `https://www.google.com/search?q=${moviesArray[randomIndex][
+        'Title'
+      ].replace(/[\s]/g, '+')}+watch+online`,
+      target: 'blank',
+    });
     const poster = makeTag('img', 'movie-image', {
       width: 300,
       height: 450,
       src: moviesArray[randomIndex]['Poster'],
       alt: moviesArray[randomIndex]['Title'],
     });
-    content.append(poster);
+    content.append(link);
+    link.append(poster);
     container.append(content);
   }
 }
