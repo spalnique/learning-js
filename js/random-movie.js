@@ -1,8 +1,8 @@
 ////////// Тут імпортуються та перетворюються дані, описуються функції,
 
-import { gotData } from './arrayOfMovieData.js';
-
-// const moviesArray = JSON.parse(jsonData);
+// import { unfilteredData } from './arrayOfMovieData.js';
+import { jsonData } from './data.js';
+const moviesArray = JSON.parse(jsonData);
 
 ///// makeTag створює html елемент із класом (або класами), атрибутами та текстовим контентом;
 ///// tagName приймає рядок із назвою тегу, наприклад 'div', 'h1', 'p';
@@ -49,37 +49,35 @@ function makeButton(type, classes, userText) {
 
 // function check(a) {
 //   const value =
-//     gotData[randomIndex].contributionQuestions.edges[0].node.entity.primaryImage
+//     moviesArray[randomIndex].contributionQuestions.edges[0].node.entity.primaryImage
 //       .url;
 //   if (
-//     gotData[randomIndex].contributionQuestions.edges[0].node.entity.primaryImage
+//     moviesArray[randomIndex].contributionQuestions.edges[0].node.entity.primaryImage
 //       .url
 //   ) {
 //     return value;
 //   } else {
-//     randomIndex = Math.round(gotData.length * Math.random());
+//     randomIndex = Math.round(moviesArray.length * Math.random());
 //   }
 // }
 
 function randomMoviePicker(n) {
   for (let i = 0; i < n; i++) {
-    // const randomIndex = Math.round(gotData.length * Math.random());
-    const randomIndex = i;
+    const randomIndex = Math.round(moviesArray.length * Math.random());
     const content = makeTag('div', 'movie-container');
     const link = makeTag('a', 'poster-link', {
-      href: `https://www.google.com/search?q=${gotData[
-        randomIndex
-      ].originalTitleText.text.replace(/[\s]/g, '+')}+watch+online`,
+      href: `https://www.google.com/search?q=${moviesArray[randomIndex][
+        'Title'
+      ].replace(/[\s]/g, '+')}+watch+online`,
       target: 'blank',
     });
-    const imageSrc =
-      gotData[randomIndex].contributionQuestions.edges[0].node.entity
-        .primaryImage.url;
+    const imageSrc = moviesArray[randomIndex]['Poster'];
+    const imageAlt = moviesArray[randomIndex]['Title'];
     const poster = makeTag('img', 'movie-image', {
-      // width: 300,
+      width: 300,
       height: 450,
       src: imageSrc,
-      alt: gotData[randomIndex].originalTitleText.text,
+      alt: imageAlt,
     });
     content.append(link);
     link.append(poster);
@@ -116,13 +114,13 @@ const logoLink = makeTag(
   'a',
   ['logo-link', 'test'],
   { href: 'index.html', name: 'sitelogo', alt: 'random' },
-  '__ RandoMovie.UA',
+  '__ RandoMovie.JS',
 );
 
 const generateButton = makeButton(
   'button',
   'regenerate',
-  'Get another three awesome ukrainian movies!',
+  'Get another three awesome movies!',
 );
 
 assembleBaseHtml({
@@ -131,6 +129,6 @@ assembleBaseHtml({
   main: [container, generateButton],
 });
 
-randomMoviePicker(1270);
+randomMoviePicker(3);
 
 getListener(generateButton, 'click', location.reload.bind(location));
