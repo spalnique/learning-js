@@ -111,6 +111,7 @@ assembleBaseHtml({
   body: [header, main, footer],
   header: [logoLink],
   main: [container, generateButton],
+  container: [randomMoviePicker()],
 });
 
 randomMoviePicker(3);
