@@ -1,4 +1,4 @@
-const fse = require('fs/promises');
+// const fse = require('fs/promises');
 
 const uaMovieIDsDatabase = [
   'tt19465630',
@@ -1274,9 +1274,8 @@ const uaMovieIDsDatabase = [
   'tt15142006',
   'tt30746362',
 ];
-const storedData = [];
 
-console.log(uaMovieIDsDatabase.length);
+const storedData = [];
 
 async function doFetch(x, array) {
   const options = {
@@ -1293,52 +1292,52 @@ async function doFetch(x, array) {
   storedData.push(result);
 }
 
-async function getData() {
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '7111099f99msh2cbd1cdb12d2a6bp16bba2jsn8b393f9df304',
-      'X-RapidAPI-Host': 'imdb146.p.rapidapi.com',
-    },
-  };
-  let i = 1;
-  for (const item of uaMovieIDsDatabase) {
-    console.log(i);
-    const url = `https://imdb146.p.rapidapi.com/v1/title/?id=${item}`;
-    try {
-      const response = await fetch(url, options);
-      const result = await response.json();
-      storedData.push(result);
-    } catch (error) {
-      console.error(error);
-    }
-    i++;
-  }
-  fse.appendFile('fetchResultLoopTest.txt', JSON.stringify(storedData));
-}
-
-getData();
-
-// async function testingFn() {
-//   const count = uaMovieIDsDatabase.length - 1;
-//   let i = 0;
-//   const ticker = setInterval(async () => {
-//     if (i <= count) {
-//       try {
-//         await doFetch(i, uaMovieIDsDatabase);
-//       } catch (error) {
-//         console.error(error);
-//         clearInterval(ticker);
-//       }
-//       i++;
-//       if (!(i % 30)) {
-//         console.log(`${i / 30} minutes passed away`);
-//       }
-//     } else {
-//       clearInterval(ticker);
-//       fse.appendFile('fetchResult.txt', JSON.stringify(storedData));
+// async function getData() {
+//   const options = {
+//     method: 'GET',
+//     headers: {
+//       'X-RapidAPI-Key': '7111099f99msh2cbd1cdb12d2a6bp16bba2jsn8b393f9df304',
+//       'X-RapidAPI-Host': 'imdb146.p.rapidapi.com',
+//     },
+//   };
+//   let i = 1;
+//   for (const item of uaMovieIDsDatabase) {
+//     console.log(i);
+//     const url = `https://imdb146.p.rapidapi.com/v1/title/?id=${item}`;
+//     try {
+//       const response = await fetch(url, options);
+//       const result = await response.json();
+//       storedData.push(result);
+//     } catch (error) {
+//       console.error(error);
 //     }
-//   }, 2000);
+//     i++;
+//   }
+//   fse.appendFile('fetchResultLoopTest.txt', JSON.stringify(storedData));
 // }
 
-// testingFn();
+// getData();
+
+async function testingFn() {
+  const count = uaMovieIDsDatabase.length - 1;
+  let i = 0;
+  const ticker = setInterval(async () => {
+    if (i <= count) {
+      try {
+        await doFetch(i, uaMovieIDsDatabase);
+      } catch (error) {
+        console.error(error);
+        clearInterval(ticker);
+      }
+      i++;
+      if (!(i % 30)) {
+        console.log(`${i / 30} minutes passed away`);
+      }
+    } else {
+      clearInterval(ticker);
+      fse.appendFile('fetchResult.txt', JSON.stringify(storedData));
+    }
+  }, 2000);
+}
+
+testingFn();
