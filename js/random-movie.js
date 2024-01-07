@@ -52,7 +52,7 @@ function makeButton(type, classes, userText) {
 function randomMoviePicker(n) {
   const array = [];
   for (let i = 0; i < n; i++) {
-    const randomIndex = Math.round(moviesArray.length * Math.random());
+    const randomIndex = Math.floor(moviesArray.length * Math.random());
     const imageSrc =
       moviesArray[randomIndex].contributionQuestions.edges[0].node.entity
         .primaryImage.url;
