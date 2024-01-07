@@ -10,7 +10,8 @@
 ///// attObj  приймає обʼєкт, у якому key це імʼя атрибуту, а value - рядок, що є його значенням;
 ///// innerText приймає рядок, що розташовується між відкриваючим та закриваючим тегами;
 
-import { filteredData } from './arrayOfMovieData.js';
+// import { filteredData } from './arrayOfMovieData.js';
+import { data_v1 } from './unfilteredData.js';
 
 function makeTag(tagName, classes, attObj, userText) {
   const html = document.createElement(tagName);
@@ -103,7 +104,7 @@ function addMovies(placement, quantity) {
 
 ////////// Після цього вже руцями викликаємо створюємо бажані елементи та викликаємо відповідні функції //////////
 
-const moviesArray = filteredData;
+const moviesArray = data_v1;
 const header = makeTag('header', ['header', 'header-container']);
 const main = makeTag('main', 'main-container');
 const footer = makeTag('footer', ['footer', 'footer-container']);
