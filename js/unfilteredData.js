@@ -1,4 +1,3 @@
-const fse = require('fs-extra');
-
-const array = fse.readJSONSync('./filteredData.txt');
-console.log(array);
+// const fse = require('fs-extra');
+import { fse } from '../node_modules'
+export const array = fse.readJSONSync('./filteredData.txt');

@@ -49,6 +49,10 @@ button {
   flex-basis: calc((100% - 50px * 2) / 3);
   transition: scale 300ms cubic-bezier(0.47, 0, 0.745, 0.715);
 }
+/* .hidden {
+  opacity: 0;
+  transition: opacity 1s ease;
+ */
 
 .movie-container:hover {
   scale: 1.05;
@@ -61,7 +65,7 @@ button {
 
 .logo-link {
   display: block;
-  width: 222px;
+  width: 225px;
   padding: 10.5px;
   border-radius: 4px;
   background-color: rgb(211, 60, 33);
