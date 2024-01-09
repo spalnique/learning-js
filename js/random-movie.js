@@ -1,17 +1,12 @@
 ////////// Тут імпортуються та перетворюються дані, описуються функції,
 
-// import { unfilteredData } from './arrayOfMovieData.js';
-// import { jsonData } from './data.js';
-// const moviesArray = JSON.parse(jsonData);
+import { data_v1 } from './unfilteredData.js';
 
 ///// makeTag створює html елемент із класом (або класами), атрибутами та текстовим контентом;
 ///// tagName приймає рядок із назвою тегу, наприклад 'div', 'h1', 'p';
 ///// classes приймає рядок або масив рядків, наприклад 'header', 'logo', ['header', 'logo'];
 ///// attObj  приймає обʼєкт, у якому key це імʼя атрибуту, а value - рядок, що є його значенням;
 ///// innerText приймає рядок, що розташовується між відкриваючим та закриваючим тегами;
-
-// import { filteredData } from './arrayOfMovieData.js';
-import { data_v1 } from './unfilteredData.js';
 
 function makeTag(tagName, classes, attObj, userText) {
   const html = document.createElement(tagName);
@@ -57,7 +52,7 @@ function randomMoviePicker(n) {
       moviesArray[randomIndex].contributionQuestions.edges[0].node.entity
         .primaryImage.url;
     const imageAlt = moviesArray[randomIndex].originalTitleText.text;
-    const movieCard = makeTag('div', ['movie-container', 'hidden']);
+    const movieCard = makeTag('div', 'movie-container');
     const poster = makeTag('img', 'movie-image', {
       width: 300,
       height: 450,
@@ -92,14 +87,34 @@ function assembleBaseHtml(obj) {
   }
 }
 
-function getListener(element, eventType, callback) {
-  element.addEventListener(eventType, callback);
+///// getListener - додає до елементу прослуховувач подій.
+///// Приймає наступні параметри: element, eventType, callBackFn. Опис параметрів:
+///// element - DOM елемент, на який додається слухач, створений власноруч у розмітці сторінки
+///// і отриманий за допомогою document.querySelector() або за допомогою функції makeTag()
+///// eventType - рядок, що визначає тип події, наприклад 'click', 'submit', 'DOMContentLoaded', etc;
+///// callbackFn - функція, що виконується при події eventType
+///// Приклад виклику:
+///// const newButton = makeButton('button', 'show-alert', 'Show alert message!');
+///// getListener(newButton, 'click', () => alert('You have just clicked on a button that cause this alert to appear');
+
+function getListener(element, eventType, callbackFn) {
+  element.addEventListener(eventType, callbackFn);
 }
+
+///// addMovies - функція, що додає кількість карток з фільмами quantity до батьківського DOM-елементу placement;
+///// Приклад виклику:
+///// const wrapper = document.querySelector('.wrapper');
+///// addMovies(wrapper, 3);
 
 function addMovies(placement, quantity) {
   const x = randomMoviePicker(quantity);
   x.forEach(item => placement.insertAdjacentElement('beforeend', item));
-  const movieContainer = document.querySelector('.movie-container');
+  const movieImages = document.querySelectorAll('.movie-image');
+  movieImages.forEach(x => {
+    x.addEventListener('load', () => {
+      x.classList.add('visible');
+    });
+  });
 }
 
 ////////// Після цього вже руцями викликаємо створюємо бажані елементи та викликаємо відповідні функції //////////
@@ -121,10 +136,13 @@ const generateButton = makeButton(
   'Get another three awesome movies!',
 );
 
+const toTop = makeButton('button', 'to-the-top', '\u25b2');
+
 assembleBaseHtml({
   body: [footer, main, header],
   header: [logoLink],
   main: [generateButton, container],
+  footer: [toTop],
 });
 
 addMovies(container, 3);
@@ -132,7 +150,14 @@ addMovies(container, 3);
 getListener(generateButton, 'click', () => {
   addMovies(container, 3);
   setTimeout(() => {
-    generateButton.scrollIntoView({ behavior: 'smooth' });
+    footer.scrollIntoView({
+      block: 'end',
+      behavior: 'smooth',
+    });
   }, 250);
 });
-/////////////////////////////////////////////////////
+getListener(toTop, 'click', () => {
+  setTimeout(() => {
+    header.scrollIntoView({ block: 'end', behavior: 'smooth' });
+  }, 250);
+});

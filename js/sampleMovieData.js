@@ -1,35 +1,11 @@
 const sample = [
   {
     id: 'tt19465630',
-    productionStatus: {
-      currentProductionStage: {
-        id: 'released',
-        text: 'Released',
-        __typename: 'ProductionStage',
-      },
-      productionStatusHistory: [
-        {
-          status: {
-            id: 'released',
-            text: 'Released',
-            __typename: 'ProductionStatus',
-          },
-          __typename: 'ProductionStatusHistory',
-        },
-      ],
-      restriction: null,
-      __typename: 'ProductionStatusDetails',
-    },
-    canHaveEpisodes: false,
-    series: null,
-    titleText: { text: 'Sniper. The White Raven', __typename: 'TitleText' },
-    titleType: { id: 'movie', canHaveEpisodes: false, __typename: 'TitleType' },
     originalTitleText: {
       text: 'Sniper. The White Raven',
       __typename: 'TitleText',
     },
     certificate: { rating: 'R', __typename: 'Certificate' },
-    releaseYear: { year: 2022, __typename: 'YearRange' },
     releaseDate: {
       day: 24,
       month: 8,
@@ -37,246 +13,37 @@ const sample = [
       country: {
         id: 'UA',
         text: 'Ukraine',
-        __typename: 'LocalizedDisplayableCountry',
       },
-      __typename: 'ReleaseDate',
     },
-    runtime: { seconds: 6660, __typename: 'Runtime' },
-    canRate: { isRatable: true, __typename: 'CanRate' },
-    ratingsSummary: { topRanking: null, __typename: 'RatingsSummary' },
-    meterRanking: {
-      currentRank: 2519,
-      rankChange: {
-        changeDirection: 'UP',
-        difference: 1534,
-        __typename: 'MeterRankChange',
-      },
-      __typename: 'TitleMeterRanking',
-    },
-    primaryImage: { id: 'rm1439244033', __typename: 'Image' },
-    images: {
-      total: 7,
-      edges: [
-        {
-          node: { id: 'rm2361990913', __typename: 'Image' },
-          __typename: 'ImageEdge',
-        },
-      ],
-      __typename: 'ImageConnection',
-    },
-    videos: { total: 3, __typename: 'TitleRelatedVideosConnection' },
-    primaryVideos: {
-      edges: [
-        {
-          node: {
-            id: 'vi787071513',
-            createdDate: '2022-06-06T17:09:03.553Z',
-            isMature: false,
-            runtime: { value: 129, __typename: 'VideoRuntime' },
-            name: {
-              value: 'Official Trailer',
-              language: 'uk',
-              __typename: 'LocalizedString',
-            },
-            description: {
-              value:
-                'After suffering a tragedy at the hand of invading soldiers in Donbas, an Ukrainian physics teacher seeks revenge. He sets his sights on an elite Russian sniper whose elimination could change the tide of the conflict.',
-              language: 'uk',
-              __typename: 'LocalizedString',
-            },
-            timedTextTracks: [],
-            recommendedTimedTextTrack: null,
-            thumbnail: {
-              url: 'https://m.media-amazon.com/images/M/MV5BMjYyNDMwN2MtNTAyZS00NDBkLWI5ZTktMzA3ZGU5NDRlMWY4XkEyXkFqcGdeQWRpZWdtb25n._V1_.jpg',
-              height: 1080,
-              width: 1920,
-              __typename: 'Thumbnail',
-            },
-            primaryTitle: {
-              id: 'tt19465630',
-              titleText: {
-                text: 'Sniper. The White Raven',
-                __typename: 'TitleText',
-              },
-              originalTitleText: {
-                text: 'Sniper. The White Raven',
-                __typename: 'TitleText',
-              },
-              releaseYear: { year: 2022, __typename: 'YearRange' },
-              __typename: 'Title',
-            },
-            playbackURLs: [
-              {
-                displayName: {
-                  value: '480p',
-                  language: 'en-US',
-                  __typename: 'LocalizedString',
-                },
-                videoMimeType: 'MP4',
-                videoDefinition: 'DEF_480p',
-                url: 'https://imdb-video.media-imdb.com/vi787071513/1434659607842-pgv4ql-1654535344437.mp4?Expires=1704594378&Signature=pk9oLzJ7nmRPWziOoPqahnfl1pneZBj~QozltPVrlatPp1zzkQ2j0i1rWC4-R6PIrfFhTzAyEyY2pXlpFo4EP98U4sfDGct12M5U7w6TvG11CmYxuXEZ8uooIjR64ZDAL0L2shne8V8soqSDobNTUhECPhMcB3F6XXQ9SC7dqTWxVVyOW6~SJMZod~OhdNX73dTCkrIZeZU7wKBoanFva-xofPCEzIlRWbyFckbH6tgMCBM6VEyIUT0bn-xnLuklPEGqNpaZCJGjDTYCcxaDJ5GmtXuHwfOa6rMadZS0lCbKedV-t-w9HrZj8lwcbdLWHEPpVveO9hs4RGbSyKd8qA__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA',
-                __typename: 'PlaybackURL',
-              },
-              {
-                displayName: {
-                  value: 'SD',
-                  language: 'en-US',
-                  __typename: 'LocalizedString',
-                },
-                videoMimeType: 'MP4',
-                videoDefinition: 'DEF_SD',
-                url: 'https://imdb-video.media-imdb.com/vi787071513/1434659454657-dx9ykf-1654535344437.mp4?Expires=1704594378&Signature=AYZnXpjVl7gGYNhWeblMyFJstwdwT3eRC4GdfG70XlNfcGldz3Wxyvi0Box6~WgXkPGeO828~whVObwKZ27alF3BcgVlOWyUxzq5lnUmxR0vKqxt4gm0S8TtYVRPwwuq6xyvyDipCrH-LSxg~5nkou4jNsjvZh0siyHi~mUJ-CDVypapq0vNwBsyXvInoRiqqVHW~rc-0mk3Sur8GWVjCdHSYfN32EjZk4zxrWEMUeoFGxuNafykXfBhv89O-6AKnS5brV~5lBBzpmn-tL0PctWZiVDFHbrQ1g4ilipeMNeckqOGgz4GE19i0CnWPY~ySiVGNFJfb13Qe6M~eakugA__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA',
-                __typename: 'PlaybackURL',
-              },
-            ],
-            contentType: {
-              id: 'amzn1.imdb.video.contenttype.trailer',
-              displayName: { value: 'Trailer', __typename: 'LocalizedString' },
-              __typename: 'VideoContentType',
-            },
-            previewURLs: [
-              {
-                displayName: {
-                  value: 'AUTO',
-                  language: 'en-US',
-                  __typename: 'LocalizedString',
-                },
-                videoMimeType: 'M3U8',
-                videoDefinition: 'DEF_AUTO',
-                url: 'https://imdb-video.media-imdb.com/vi787071513/hls-preview-79353ff1-9750-49d0-8f07-f8d72a396b4b.m3u8?Expires=1704594378&Signature=FAjZQw6fU-60FSeAODxL1nuetmYdE1u1EdJ9Ke5r4TZPx-ZGdO8cwok-IQwlMz3b4zuFTgDB32nHJBLJm6QoGhC6fKiAMJP0i7CdULOERNz2f-IniRzLyD4eKgb5hYEfc6f2St28XjLfumHICcGK5RwrlKnHwviX~VgSHozUkzFnnly9-yX3YEeMKQ44rDMYV5Il2jAzi3qAA9FIZt7F6T2bj2opNm0hItS8n4aAolU-80wXtmobZWLOELBdp6NJvGcsgKmutxjClb2c6TOXhE~wOvCA0CSepGd1d7nLkRhqrsUR1gEZMON5M8FXvKRrM81~58D~XYCBqfL6k5RCIg__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA',
-                __typename: 'PlaybackURL',
-              },
-            ],
-            __typename: 'Video',
-          },
-          __typename: 'VideoEdge',
-        },
-        {
-          node: {
-            id: 'vi1334755865',
-            createdDate: '2022-05-17T15:34:59.035Z',
-            isMature: false,
-            runtime: { value: 137, __typename: 'VideoRuntime' },
-            name: {
-              value: 'Teaser Trailer',
-              language: 'uk',
-              __typename: 'LocalizedString',
-            },
-            description: {
-              value:
-                "Mykola is an eccentric pacifist who wants to be useful to humanity. When the war begins at Donbass, Mykola's naive world is collapsing as the militants kill his pregnant wife and burn his home to the ground.",
-              language: 'uk',
-              __typename: 'LocalizedString',
-            },
-            timedTextTracks: [],
-            recommendedTimedTextTrack: null,
-            thumbnail: {
-              url: 'https://m.media-amazon.com/images/M/MV5BYjcyZThmYmUtZTFjMC00YzU5LWFkYzItNGNiNjUzMWJhYTJkXkEyXkFqcGdeQWRpZWdtb25n._V1_.jpg',
-              height: 1080,
-              width: 1920,
-              __typename: 'Thumbnail',
-            },
-            primaryTitle: {
-              id: 'tt19465630',
-              titleText: {
-                text: 'Sniper. The White Raven',
-                __typename: 'TitleText',
-              },
-              originalTitleText: {
-                text: 'Sniper. The White Raven',
-                __typename: 'TitleText',
-              },
-              releaseYear: { year: 2022, __typename: 'YearRange' },
-              __typename: 'Title',
-            },
-            playbackURLs: [
-              {
-                displayName: {
-                  value: '480p',
-                  language: 'en-US',
-                  __typename: 'LocalizedString',
-                },
-                videoMimeType: 'MP4',
-                videoDefinition: 'DEF_480p',
-                url: 'https://imdb-video.media-imdb.com/vi1334755865/1434659607842-pgv4ql-1652801699420.mp4?Expires=1704594378&Signature=FR569ZnbklrWDAqaMAsKcARJ~36uYBmYKid5iS~RvuftTBiTCXyCWVFDEyGg4BgnJxbNQGWU8k0EKG-SXeTl6cWsh0yrsoBVASekGpG6lll-lugWN4iujn6dPRNinxC~IcXkGD55GV9SKrUWsxOw9FqBEpll1Vr1a~ZOpsnCRXqrtAlBMUl2lskUDXzQTohViIPsKbhwI8Vv6qMu0CLGqITzcdDqJ9dkA0vyDyxU2xDwh7eMnlzmtz~EPIntyNHoHZkIUMG9kiDvFH0BvXB1tsFAnPhaUXoasQoW2tC-3b8FmsGwlBgoUrQhojpq~NLgvV-6u6QmGcWivo4tXDVEyw__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA',
-                __typename: 'PlaybackURL',
-              },
-              {
-                displayName: {
-                  value: 'SD',
-                  language: 'en-US',
-                  __typename: 'LocalizedString',
-                },
-                videoMimeType: 'MP4',
-                videoDefinition: 'DEF_SD',
-                url: 'https://imdb-video.media-imdb.com/vi1334755865/1434659454657-dx9ykf-1652801699420.mp4?Expires=1704594378&Signature=bnrJMp2eaobQQ2iV~T-liA4muWWwLMhERyrmd99GBSJdpuOcDqbo9Vn6lR56YgWbNlRKwvNUAPl1HkP~jP3jOoo7bwdg6Te4t-uwSxYIHMjrdJTr0Rrhfb7ecPmOqk7vsAH87afPsuJccPwiIKlP4uAi~HwUcH91mFl2SzJ5Jh-kNhOD8s1dhQ5FpZvZkuAwqecMvcNm-pn1BuEMtCEgyWYByd6Dpln8OF1cFiAJuOOoSbodTqGffvoK6YSBxJwg2ttcjXM342KRv34AKk0KpVgG9iNaZGD3-DBBmPRknxiOC-mv9l~MTz2kyzrR2~2lcGHlLhuuWfguCfORSHKPDQ__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA',
-                __typename: 'PlaybackURL',
-              },
-            ],
-            contentType: {
-              id: 'amzn1.imdb.video.contenttype.trailer',
-              displayName: { value: 'Trailer', __typename: 'LocalizedString' },
-              __typename: 'VideoContentType',
-            },
-            previewURLs: [
-              {
-                displayName: {
-                  value: 'AUTO',
-                  language: 'en-US',
-                  __typename: 'LocalizedString',
-                },
-                videoMimeType: 'M3U8',
-                videoDefinition: 'DEF_AUTO',
-                url: 'https://imdb-video.media-imdb.com/vi1334755865/hls-preview-a6117403-2798-4aea-87a8-ca26d1b444e7.m3u8?Expires=1704594378&Signature=m6HWwCHE8051mY53lnERHSzIdMq-OK~sLLgol6mQVeQXbzMNRtCzfWrEWNV0vSRTvdSsHEjWMmOqd1P-wi4r~q~xA2cKcVdJlyssqmwLNXIHYxuJkV1qfsMV77F08djeCmQEK9ipru30TvMSWu8GceQwCIS22Yz2bPNjQ5NgAXmRdAa6DSjGIrhymAsTEU3QbYCvLPDn94FKeskY1TYkmojficXWWzM6cZ1IWvbXNwUp3QdSmCTb~NAVQPF9cAfBmczK1tGr5Rysbpo9A0kqUV-S3f14Xp1G7hdhOBTsxz3wRvgdzvj5d8B49Qo-f9l05TGch1G04zoHm7HR1eoz-A__&Key-Pair-Id=APKAIFLZBVQZ24NQH3KA',
-                __typename: 'PlaybackURL',
-              },
-            ],
-            __typename: 'Video',
-          },
-          __typename: 'VideoEdge',
-        },
-      ],
-      __typename: 'VideoConnection',
-    },
-    externalLinks: { total: 28, __typename: 'ExternalLinkConnection' },
-    metacritic: {
-      metascore: { score: 54, __typename: 'Metascore' },
-      __typename: 'Metacritic',
-    },
+    runtime: { seconds: 6660 },
+    canRate: { isRatable: true },
+    ratingsSummary: { topRanking: null },
+    meterRanking: { currentRank: 2519 },
     keywords: {
       total: 43,
       edges: [
         {
           node: {
             text: 'russian occupation of ukraine',
-            __typename: 'TitleKeyword',
           },
-          __typename: 'TitleKeywordEdge',
         },
         {
-          node: { text: 'loss of wife', __typename: 'TitleKeyword' },
-          __typename: 'TitleKeywordEdge',
+          node: { text: 'loss of wife' },
         },
         {
           node: {
             text: 'husband wife relationship',
-            __typename: 'TitleKeyword',
           },
-          __typename: 'TitleKeywordEdge',
         },
         {
           node: {
             text: 'ukrainian russian relations',
-            __typename: 'TitleKeyword',
           },
-          __typename: 'TitleKeywordEdge',
         },
         {
           node: { text: 'eastern europe', __typename: 'TitleKeyword' },
-          __typename: 'TitleKeywordEdge',
         },
       ],
-      __typename: 'TitleKeywordConnection',
     },
     genres: {
       genres: [
