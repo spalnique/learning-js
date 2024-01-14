@@ -1275,23 +1275,6 @@ const uaMovieIDsDatabase = [
   'tt30746362',
 ];
 
-const storedData = [];
-
-// async function doFetch(x, array) {
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       'X-RapidAPI-Key': '7111099f99msh2cbd1cdb12d2a6bp16bba2jsn8b393f9df304',
-//       'X-RapidAPI-Host': 'imdb146.p.rapidapi.com',
-//     },
-//   };
-//   const url = `https://imdb146.p.rapidapi.com/v1/title/?id=${array[x]}`;
-//   const response = await fetch(url, options);
-//   const result = await response.json();
-//   console.log('ID being fetched:', array[x]);
-//   storedData.push(result);
-// }
-
 export class ServerRequest {
   static apiKey = '7111099f99msh2cbd1cdb12d2a6bp16bba2jsn8b393f9df304';
   static apiHost = 'imdb146.p.rapidapi.com';
