@@ -80,20 +80,6 @@ const sample = {
     ],
     __typename: 'CreditConnection',
   },
-  directorsPageTitle: [
-    {
-      credits: [
-        {
-          name: {
-            nameText: { text: 'Marian Bushan', __typename: 'NameText' },
-            __typename: 'Name',
-          },
-          __typename: 'Crew',
-        },
-      ],
-      __typename: 'PrincipalCreditsForCategory',
-    },
-  ],
   countriesOfOrigin: {
     countries: [{ id: 'UA', text: 'Ukraine', __typename: 'CountryOfOrigin' }],
     __typename: 'CountriesOfOrigin',
@@ -692,24 +678,6 @@ const sample = {
     },
   ],
   isAdult: false,
-  trivia: {
-    edges: [
-      {
-        node: {
-          text: {
-            plaidHtml:
-              'This gritty and evocative film follows a physics teacher in the Donbas region who suffers a family tragedy at the hands of invading Russian troops. The ex-pacifist joins the army as an unconventional sniper determined to gain revenge and defend the future of his country.<br/><br/>It was created with support from the Ukrainian State Film Agency, was co-written by Mykola Voronin - the real-life sniper whose story is portrayed - and features about 100 members of the Ukrainian armed forces and national guard. Even aside from those career military personnel, several of the main cast members are currently fighting on the front lines.',
-            __typename: 'Markdown',
-          },
-          trademark: null,
-          relatedNames: null,
-          __typename: 'TitleTrivia',
-        },
-        __typename: 'TriviaEdge',
-      },
-    ],
-    __typename: 'TriviaConnection',
-  },
 
   spokenLanguages: {
     spokenLanguages: [
@@ -785,6 +753,16 @@ const {
   originalTitleText: { text: movieTitle },
 } = sample;
 
+const {
+  akas: {
+    edges: [
+      {
+        node: { text: movieOriginalTitle },
+      },
+    ],
+  },
+} = sample;
+
 const { id: movieID } = sample;
 
 const {
@@ -803,8 +781,11 @@ const {
 const releaseInfo = { day, month, year, country };
 
 const {
-  genres: { genres },
+  genres: { genres: genresArr },
 } = sample;
+
+const genres = [];
+genresArr.forEach(x => genres.push(x.text));
 
 const {
   plot: {
@@ -812,22 +793,86 @@ const {
   },
 } = sample;
 
+//// getting directors ////
+
+const { directors } = sample;
+
+const directorsList = [];
+
+directors.forEach(x => directorsList.push(x.credits[0].name.nameText.text));
+
+///////////////////////////
+
+//// getting writers ////
+
 const {
-  principalCredits: [],
+  writers: [{ credits: writersCredits }],
 } = sample;
-console.log(
+
+const writersList = [];
+
+writersCredits.forEach(x => writersList.push(x.name.nameText.text));
+
+///////////////////////////
+
+//// getting main stars ////
+
+const {
+  castPageTitle: { edges: edgesMainStars },
+} = sample;
+
+const mainStars = [];
+
+edgesMainStars.forEach(x => {
+  mainStars.push(x.node.name.nameText.text);
+});
+
+///////////////////////////
+
+//// getting all stars ////
+
+const {
+  cast: { edges: edgesAllStars },
+} = sample;
+
+const allStars = [];
+
+edgesAllStars.forEach(x => {
+  allStars.push(x.node.name.nameText.text);
+});
+
+///////////////////////////
+
+const { isAdult } = sample;
+
+//// getting languages ////
+
+const {
+  spokenLanguages: { spokenLanguages: spokenLanguagesArray },
+} = sample;
+
+const languages = {};
+
+spokenLanguagesArray.forEach(x => (languages[`${x.id}`] = x.text));
+
+///////////////////////////
+
+const movieInfo = {
   movieID,
-  '\n',
   movieTitle,
-  '\n',
+  movieOriginalTitle,
+  movieTitle,
   moviePoster,
-  '\n',
   adultRating,
-  '\n',
   releaseInfo,
-  '\n',
   genres,
-  '\n',
   plot,
-  '\n',
-);
+  directorsList,
+  writersList,
+  mainStars,
+  allStars,
+  isAdult,
+  languages,
+};
+
+console.log(movieInfo);
